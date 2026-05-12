@@ -28,7 +28,8 @@ function render(){
 }
 
 document.querySelectorAll('.mood-btn').forEach(btn=>{btn.onclick=()=>{selectedMood=parseInt(btn.dataset.mood);haptic(4);render();};});
-$('saveBtn').onclick=()=>{if(!selectedMood){alert('Select a mood first');return;}const note=$('noteInput').value.trim();const today=localDateStr();const idx=entries.findIndex(e=>e.date===today);if(idx>=0)entries[idx]={date:today,mood:selectedMood,note:note||MOOD_LABELS[selectedMood]};else entries.push({date:today,mood:selectedMood,note:note||MOOD_LABELS[selectedMood]});if(!isPro&&entries.length>30)entries=entries.slice(-30);save();$('noteInput').value='';selectedMood=null;haptic([10,30,10]);render();};
+$('saveBtn').onclick=()=>{if(!selectedMood){alert('Select a mood first');return;}const note=$('noteInput').value.trim();const today=localDateStr();const idx=entries.findIndex(e=>e.date===today);if(idx>=0)entries[idx]={date:today,mood:selectedMood,note:note||MOOD_LABELS[selectedMood]};else entries.push({date:today,mood:selectedMood,note:note||MOOD_LABELS[selectedMood]});if(!isPro&&entries.length>30)entries=entries.slice(-30);save();$('noteInput').value='';selectedMood=null;$('noteInput').blur();haptic([10,30,10]);render();};
+$('noteInput').addEventListener('keydown',e=>{if(e.key==='Enter'){$('noteInput').blur();$('saveBtn').click();}});
 $('upgradeBtn').onclick=()=>{$('upgradeModal').classList.add('open');};
 $('buyPro').onclick=()=>{isPro=true;save();$('upgradeModal').classList.remove('open');haptic([10,30,10]);};
 $('closeUpgrade').onclick=()=>{$('upgradeModal').classList.remove('open');};
