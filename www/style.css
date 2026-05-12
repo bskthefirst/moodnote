@@ -1,0 +1,66 @@
+:root {
+  --bg: #F5F0F5;
+  --card: #FFFFFF;
+  --text: #2C2C2C;
+  --text-light: #8A8A8A;
+  --accent: #C38D9E;
+  --accent2: #85CDCA;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+  --radius: 20px;
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;font-family:"Inter",-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.app{max-width:430px;margin:0 auto;min-height:100vh;padding:28px 20px 120px;position:relative}
+header{text-align:center;margin-bottom:20px}
+header h1{font-family:"Outfit",sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.6px;background:linear-gradient(135deg,#C38D9E,#85CDCA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header .sub{font-size:13px;color:var(--text-light);margin-top:4px;font-weight:500}
+.streak-bar{text-align:center;margin-bottom:20px;font-size:14px;font-weight:700;color:var(--accent);background:var(--card);padding:12px;border-radius:14px;box-shadow:var(--shadow)}
+.card{background:var(--card);border-radius:var(--radius);padding:22px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);backdrop-filter:blur(10px)}
+.card label{display:block;font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;font-weight:700}
+.mood-row{display:flex;justify-content:space-between;gap:8px}
+.mood-btn{flex:1;background:var(--bg);border:2px solid transparent;border-radius:16px;padding:14px 4px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:all .25s var(--spring)}
+.mood-btn span{font-size:32px;line-height:1}
+.mood-btn small{font-size:11px;color:var(--text-light);font-weight:600}
+.mood-btn:active{transform:scale(0.92)}
+.mood-btn.selected{border-color:var(--accent);background:rgba(195,141,158,0.08);transform:scale(1.05)}
+.note-card input{width:100%;padding:16px 18px;border:2px solid rgba(0,0,0,0.06);border-radius:var(--radius);font-size:16px;background:var(--bg);color:var(--text);outline:none;transition:border-color .2s;font-weight:500}
+.note-card input:focus{border-color:var(--accent)}
+.save-btn{width:100%;padding:18px;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px24px rgba(195,141,158,0.25);transition:transform .15s;margin-bottom:24px}
+.save-btn:active{transform:scale(0.96)}
+.section-title{font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.8px;font-weight:700;margin-bottom:12px;padding-left:4px}
+.week-bar{display:flex;gap:8px;margin-bottom:24px;justify-content:center}
+.day-pill{flex:1;height:52px;border-radius:14px;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:var(--shadow);font-size:11px;font-weight:700;color:var(--text-light);transition:all .2s}
+.day-pill .mood-emoji{font-size:20px}
+.day-pill.today{border:2px solid var(--accent)}
+.entries-list{display:flex;flex-direction:column;gap:12px}
+.entry-card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start;animation:cardEnter .4s var(--spring) forwards;opacity:0}
+@keyframes cardEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.entry-emoji{font-size:32px;line-height:1}
+.entry-info{flex:1}
+.entry-note{font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px;line-height:1.4}
+.entry-date{font-size:12px;color:var(--text-light);font-weight:600}
+.upgrade-banner{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:calc(100% - 40px);max-width:390px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 8px 32px rgba(195,141,158,0.2);z-index:10}
+.upgrade-banner strong{font-size:15px;color:#fff;font-weight:800}
+.upgrade-banner p{font-size:12px;color:rgba(255,255,255,0.85);margin-top:2px;font-weight:500}
+.upgrade-btn{background:#fff;color:var(--accent);border:none;padding:11px 20px;border-radius:14px;font-size:14px;font-weight:800;cursor:pointer;transition:transform .15s}
+.upgrade-btn:active{transform:scale(0.93)}
+.upgrade-banner.hidden{display:none}
+.modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;z-index:100}
+.modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.4);opacity:0;transition:opacity .3s}
+.modal.open .modal-backdrop{opacity:1}
+.modal-content{background:var(--card);border-radius:var(--radius) var(--radius) 0 0;padding:28px 24px 36px;width:100%;max-width:430px;position:relative;transform:translateY(100%);transition:transform .45s var(--spring);box-shadow:var(--shadow-lg)}
+.modal.open .modal-content{transform:translateY(0)}
+.upgrade-modal{text-align:center;padding-top:36px}
+.upgrade-modal h2{font-family:"Outfit",sans-serif;font-size:24px;font-weight:800;margin-bottom:18px}
+.upgrade-modal ul{list-style:none;margin-bottom:28px}
+.upgrade-modal li{padding:9px 0;color:var(--text-light);font-size:15px;font-weight:500}
+.upgrade-modal li::before{content:"\u2713";color:var(--accent);margin-right:10px;font-weight:800}
+.btn-primary{width:100%;padding:16px;border-radius:14px;font-size:16px;font-weight:800;border:none;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;margin-bottom:10px;box-shadow:0 4px 20px rgba(195,141,158,0.2);transition:transform .15s}
+.btn-primary:active{transform:scale(0.97)}
+.btn-text{background:none;border:none;color:var(--text-light);font-size:15px;font-weight:600;cursor:pointer;padding:12px 16px;border-radius:12px;transition:background .15s;width:100%}
+.btn-text:active{background:rgba(0,0,0,0.04)}
+.hidden{display:none !important}
+@supports(padding-top:env(safe-area-inset-top)){.app{padding-top:calc(28px + env(safe-area-inset-top))}}

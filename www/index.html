@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#F5F0F5">
+<title>MoodNote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>MoodNote</h1>
+    <p class="sub" id="date"></p>
+  </header>
+
+  <div class="streak-bar" id="streakBar">
+    <span id="streakText">0 day streak</span>
+  </div>
+
+  <div class="card mood-card">
+    <label>How are you feeling?</label>
+    <div class="mood-row">
+      <button class="mood-btn" data-mood="1"><span>😢</span><small>Awful</small></button>
+      <button class="mood-btn" data-mood="2"><span>🙁</span><small>Bad</small></button>
+      <button class="mood-btn" data-mood="3"><span>😐</span><small>Okay</small></button>
+      <button class="mood-btn" data-mood="4"><span>🙂</span><small>Good</small></button>
+      <button class="mood-btn" data-mood="5"><span>😄</span><small>Great</small></button>
+    </div>
+  </div>
+
+  <div class="card note-card">
+    <label>One line about today</label>
+    <input type="text" id="noteInput" placeholder="Something that stood out..." maxlength="120" enterkeyhint="done">
+  </div>
+
+  <button class="save-btn" id="saveBtn">Save Entry</button>
+
+  <div class="section-title">This Week</div>
+  <div class="week-bar" id="weekBar"></div>
+
+  <div class="section-title">Recent</div>
+  <div class="entries-list" id="entriesList"></div>
+
+  <div class="upgrade-banner" id="upgradeBanner">
+    <div>
+      <strong>MoodNote Pro</strong>
+      <p>Unlimited history, trends & export</p>
+    </div>
+    <button class="upgrade-btn" id="upgradeBtn">$2.99</button>
+  </div>
+</div>
+
+<div class="modal" id="upgradeModal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content upgrade-modal">
+    <h2>MoodNote Pro</h2>
+    <ul>
+      <li>Unlimited history</li>
+      <li>Mood trends & insights</li>
+      <li>Export your data</li>
+      <li>Custom themes</li>
+    </ul>
+    <button class="btn-primary" id="buyPro">Unlock for $2.99</button>
+    <button class="btn-text" id="closeUpgrade">Not now</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

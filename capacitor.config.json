@@ -1,0 +1,12 @@
+{
+  "appId": "com.suhyun.moodnote",
+  "appName": "MoodNote",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "backgroundColor": "#F5F0F5",
+      "androidScaleType": "CENTER_CROP"
+    }
+  }
+}
